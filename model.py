@@ -1,18 +1,10 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[7]:
-
 
 import tensorflow as tf
 import numpy as np
-from flask import Flask, request, render_template
-from varname import nameof
-from flask import send_file
 from PIL import Image
-
-
-# In[8]:
 
 
 def check_input_validation(word):
@@ -21,11 +13,6 @@ def check_input_validation(word):
         if i in 'abcdefghijklmnopqrstuvwxyz ':
             iter += 1
     return iter == len(word)
-
-
-
-# In[9]:
-
 
 models = {}
 def get_image(letter):
@@ -61,46 +48,5 @@ def generate_result(word):
     result_image.save('result.jpg', file_format="jpg", dpi=(300, 300))
     return result_image
    
-
-
-# In[10]:
-
-
-app = Flask(__name__)
-
-
-# In[11]:
-
-@app.route('/')
-def home():
-    return render_template('home.html')
-
-    
-@app.route('/predict')
-def return_image_letter():
-    
-    letter = request.args.get('letter')
-    letters = ''
-    if check_input_validation(letter):
-        img = get_image(letter)
-        img.save('result.png')
-        return send_file('result.png')
-    else:
-        return 'Input is incorrect!'
-    
-if __name__ == '__main__':
-    app.debug = True
-    app.run()
-
-
-# In[12]:
-
-
-
-
-
-# In[ ]:
-
-
 
 
