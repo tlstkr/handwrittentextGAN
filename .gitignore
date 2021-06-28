@@ -1,5 +1,7 @@
-env/
-*.png
+.*
 config.py
-.idea/
-.vscode/
+other
+venv
+text_generate_gan.ipynb
+GAN.ipynb
+result.jpg
