@@ -1,0 +1,5 @@
+env/
+*.png
+config.py
+.idea/
+.vscode/
